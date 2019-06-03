@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="assets/css/style.css" type="text/css" />
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    
+    <script type="text/javascript" src="assets/js/github-information.js"></script>
 </head>
 
 <body>
@@ -59,6 +61,9 @@
                 <h3 class="contact-heading uppercase text-center">View My GitHub Projects:</h3>
                 <h5 class="uppercase text-center">(or change the username to search for other user profiles)</h5>
             </div>
+
+<!-- octocat is github's mascot, their own public facing user on github -->
+<!-- the fetchGithubInformation function will be fired everytime something is input into the input box -->
 
             <div class="center-form">
                 <input type="text" id="gh-username" value="octocat" oninput="fetchGitHubInformation()">
