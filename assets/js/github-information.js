@@ -61,10 +61,13 @@ function fetchGitHubInformation(event) {
             $("#gh-user-data").html(userInformationHTML(userData));
             $("#gh-repo-data").html(repoInformationHTML(repoData));
         },
-        function(errorResponse) {
+        function(errorResponse) {                               // errors - 404 page not found / 403 too many requests to github
             if (errorResponse.status === 404) {
                 $("#gh-user-data").html(
                     `<h2>No info found for user ${username}</h2>`);
+            } else if (errorResponse.status === 403) {                            // too many requests error - return user friendly message
+                var resetTime = new Date(errorResponse.getResponseHeader('X-RateLimit-Reset') * 1000);
+                $("#gh-user-data").html(`<h4>Too many requests, please wait until ${resetTime.toLocaleTimeString()}</h4>`);
             } else {
                 console.log(errorResponse);
                 $("#gh-user-data").html(
